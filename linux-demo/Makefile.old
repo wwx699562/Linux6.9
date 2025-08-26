@@ -1,0 +1,10 @@
+initramfs:
+	cd ./initramfs_dir && find . -print0 | cpio -ov --null --format=newc | gzip -9 > ../initramfs.img
+run:
+	qemu-system-x86_64 \
+		-kernel bzImage \
+		-initrd initramfs.img \
+		-m 1G \
+		-nographic \
+		-append "earlyprintk=serial,ttyS0 console=ttyS0 nokaslr" \
+		-s -S

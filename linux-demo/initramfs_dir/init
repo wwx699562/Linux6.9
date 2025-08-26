@@ -1,0 +1,6 @@
+#!/bin/busybox sh
+
+/bin/busybox mkdir -p /proc && /bin/busybox mount -t proc none /proc
+/bin/busybox echo "hello linux6.9"
+export PS1='(kernel)=>'
+/bin/busybox sh
